@@ -1,0 +1,85 @@
+<div class="bg-secondary">
+  <div class="container">
+    <div class="d-grid gap-2 col-12 pt-3">
+      <label class="ms-3" style="font-weight: bold"><h5>Search</h5></label>
+      <input
+        class="container d-flex justify-content-center col-12 form-control border-warning border-1 bg-dark px-3"
+        data-bs-theme="dark"
+        type="search"
+        [(ngModel)]="searchFilter"
+        placeholder="Search cryptocurrency here..."
+      />
+      <div class="container d-flex justify-content-center pt-3 ps-4">
+        <div class="row g-3">
+          <div
+            class="col-md-4"
+            *ngFor="let coin of cryptos | filter : searchFilter"
+          >
+            <div
+              class="card bg-dark shadow rounded border-warning border-1 mb-3"
+              style="width: 20rem; color: #f8a33c"
+            >
+              <div
+                class="card-header d-grid gap-2 d-md-flex justify-content-md-between"
+              >
+                <h5 class="card-title">{{ coin.name }}</h5>
+                <img
+                  src="https://assets.coincap.io/assets/icons/{{
+                    coin.symbol
+                  }}@2x.png"
+                  class="card-img-top img-fluid coin-icon"
+                  alt="{{ coin.name }}"
+                />
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-secondary-subtle">
+                  Ranking:
+                  <strong>{{ coin.rank }}</strong>
+                </li>
+                <li class="list-group-item bg-secondary-subtle">
+                  Currency:
+                  <strong>{{ coin.symbol | uppercase }}</strong>
+                </li>
+                <li class="list-group-item bg-secondary-subtle">
+                  Current price:
+                  <strong>$ {{ coin.priceUsd | number : "0.0-0" }} </strong>
+                </li>
+                <li class="list-group-item bg-secondary-subtle">
+                  Price change percentage 24h:
+                  <strong>
+                    {{ coin.changePercent24Hr | number : "0.0-2" }} %
+                  </strong>
+                </li>
+              </ul>
+              <div
+                class="card-footer d-grid gap-2 d-md-flex justify-content-md-between"
+              >
+                <div>
+                  <a
+                    type="button"
+                    class="btn shadow fw-semibold btn-sm"
+                    style="background-color: #f8a33c; color: black"
+                    data-bs-toggle="modal"
+                    data-bs-target="#Modal1"
+                    (click)="selectCrypto(coin)"
+                  >
+                    More details
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="{{ coin.explorer }}"
+                    class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    style="color: #f8a33c"
+                    >Blokchain.com</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-coins-modal [coin]="coinParent"></app-coins-modal>

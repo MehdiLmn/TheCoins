@@ -1,16 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoinsComponent } from './Components/coins/coins.component';
+import { CoinsModalComponent } from './Components/coin-modal/coins-modal.component';
+import { HeaderComponent } from './Components/Layouts/header/header.component';
+import { FooterComponent } from './Components/Layouts/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './Pipe/filter.pipe';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    CoinsComponent,
+    CoinsModalComponent,
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

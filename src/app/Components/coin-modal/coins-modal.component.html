@@ -1,0 +1,60 @@
+<div class="modal" tabindex="-1" id="Modal1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-warning-subtle border-2">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" style="color: #f8a33c">
+          <strong>{{ coin?.name }} - {{ coin?.symbol | uppercase }}</strong>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-0">
+          <div class="col-md-12">
+            <div class="card-body">
+              <h3 class="card-title"></h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Supply:
+                  <strong> $ {{ coin?.supply | number : "0.0-0" }}</strong>
+                </li>
+                <li class="list-group-item" *ngIf="coin?.maxSupply">
+                  Max supply:
+                  <strong> $ {{ coin?.maxSupply | number : "0.0-0" }}</strong>
+                </li>
+                <li class="list-group-item" *ngIf="!coin?.maxSupply">
+                  Max supply:
+                  <strong class="text-danger">No offer max</strong>
+                </li>
+                <li class="list-group-item">
+                  Market Capitalisation:
+                  <strong>
+                    $ {{ coin?.marketCapUsd | number : "0.0-0" }}</strong
+                  >
+                </li>
+                <li class="list-group-item">
+                  24h volume ranking by currency:
+                  <strong>
+                    $ {{ coin?.volumeUsd24Hr | number : "0.0-0" }}</strong
+                  >
+                </li>
+                <li class="list-group-item">
+                  Price:
+                  <strong> $ {{ coin?.priceUsd | number : "0.0-0" }}</strong>
+                </li>
+                <li class="list-group-item">
+                  Volume-weighted average price:
+                  <strong> $ {{ coin?.vwap24Hr | number : "0.0-0" }}</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
